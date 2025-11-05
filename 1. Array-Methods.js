@@ -159,7 +159,7 @@ const account2 = {
 
 const account3 = {
   owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  movements: [200, -200],
   interestRate: 0.7,
   pin: 3333,
   type: 'premium',
@@ -258,7 +258,7 @@ const newArr18 = arr18.flat(3);
 console.log('arr18: ', arr18);
 console.log('arr18.flat(2): ', newArr18);
 
-// TODO flatMap method: turn multi dimension array into one.
+// TODO flatMap method: turn multi dimension array into one and implement map method on each element.
 console.log('------ FlatMap method -------');
 
 const arr19 = accounts;
@@ -275,7 +275,7 @@ console.log('arr19: ', arr19);
 console.log('newArr19 ', newArr19);
 console.log('newArr19Map ', newArr19Map);
 
-// TODO Sort method: turn multi dimension array into one.
+// TODO Sort method: sort values of an array.
 console.log('------ Sort method -------');
 
 console.log('- String -');
@@ -292,3 +292,89 @@ const newArr20Sorted = arr20.sort((a, b) => a - b);
 console.log('arr20: ', arr20);
 console.log('newArr20: arr20.sort() ', newArr20);
 console.log('newArr20Sorted: arr20.sort((a, b) => a - b) ', newArr20Sorted);
+
+// TODO GroupBy method: assign each element to a group by the callback function we define.
+console.log('------ GroupBy method -------');
+const arr21 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const newObj21 = Object.groupBy(arr21, value =>
+  value > 0 ? 'Deposit' : 'Withdraw'
+);
+console.log('arr21: ', arr21);
+console.log('newObj21: ', newObj21);
+
+// DESC account grouping example: #1
+const groupByActivity = Object.groupBy(accounts, account => {
+  const transactionLength = account.movements.length;
+  if (transactionLength >= 8) return 'Very Active';
+  if (transactionLength >= 4) return 'Active';
+  if (transactionLength >= 2) return 'Moderate';
+  return 'inactive';
+});
+console.log('groupByActivity: ', groupByActivity);
+
+// DESC account grouping example: #2
+const groupByAccountType = Object.groupBy(accounts, account => account.type);
+console.log('groupByAccountType: ', groupByAccountType);
+
+// TODO Array.from() method: make new arrays.
+console.log('------ Array.from() method -------');
+
+const arr22 = [1, 2, 3, 4, 5, 6, 7];
+console.log(
+  'Creating arr22: new Array(1, 2, 3, 4, 5, 6, 7) ',
+  new Array(1, 2, 3, 4, 5, 6, 7)
+);
+
+const emptyArray = new Array(7);
+console.log('emptyArray: new Array(7): ', emptyArray);
+console.log('new Array(7): ', emptyArray);
+
+emptyArray.fill(7, 2, 5);
+console.log('emptyArray.fill(7,2,5): ', emptyArray);
+
+console.log('arr22: ', arr22);
+console.log('arr22.fill(23,2,6): ', arr22.fill(23, 2, 6));
+
+const fixedArray = Array.from({ length: 7 }, () => 1);
+console.log('fixedArray: ', fixedArray);
+
+const rangeArray = Array.from({ length: 7 }, (_, index) => index + 1);
+console.log('rangeArray: ', rangeArray);
+
+// DESC create 100 dice rolls:
+// const dice = Array.from(
+//   { length: 100 },
+//   () => Math.trunc(Math.random() * 6) + 1
+// );
+// console.log(dice);
+
+// TODO non-Destructive methods
+console.log('------ Non-Destructive methods -------');
+const arr23 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const newArr23 = arr23.reverse();
+// DESC it changes the original data !
+console.log(
+  'newArr23: arr23.reverse() ',
+  newArr23,
+  '\n It changes the original value of arr23'
+);
+console.log('arr23: ', arr23);
+
+const arr24 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const newArr24 = arr24.toReversed();
+console.log(
+  'newArr24: arr24.toReversed() ',
+  newArr24,
+  "\n It doesn't change the original value of arr24"
+);
+console.log('arr24: ', arr24);
+
+console.log(
+  'toReversed(), toSorted(), toSpliced()\n They work just like reversed(), sort(), splice() but they do not change the original value of the array. (they create a copy and do the exact operations)'
+);
+// DESC the following code will change the original array
+// const newValue = arr24[1] = 2000
+
+const newValue = arr24.with(1, 2000);
+console.log('arr24: ', arr24);
+console.log('arr24.with(1, 2000): ', newValue);
