@@ -95,3 +95,39 @@ console.log(
   ' ',
   typeof +(2.345).toFixed(2)
 );
+
+// TODO
+console.log('------------ Numeric separator ------------');
+// 2,857,104,723,382,948
+const diameter = 2_857_104_723_382_948;
+console.log('diameter: 2_857_104_723_382_948: ', diameter);
+
+console.log(
+  'Number("230_000"): ',
+  Number('230_000'),
+  ': It doesn"t work on format changing.'
+);
+
+console.log(
+  'parseInt("230_000"): ',
+  parseInt('230_000'),
+  ': Only gives the first digit format.'
+);
+
+console.log('------------ BigInt ------------');
+
+console.log('10000n - 5000n :', 10000n - 5000n);
+console.log('10000n + 5000n :', 10000n + 5000n);
+console.log('10000n * 5000n :', 10000n * 5000n);
+console.log('10000n / 5000n :', 10000n / 5000n);
+console.log('10000n ** 2n :', 10000n ** 2n);
+console.log('10000n % 2n :', 10000n % 2n);
+
+console.log('typeof 10000n: ', typeof 10000n);
+
+console.log('11n / 3n: ', 11n / 3n);
+console.log('12n / 3n: ', 12n / 3n);
+
+console.log('20n == 20n :', 20n == 20);
+console.log('20n > 19 :', 20n > 19);
+console.log('20n == String(20) :', 20n == String(20));
