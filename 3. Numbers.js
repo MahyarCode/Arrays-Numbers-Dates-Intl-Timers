@@ -131,3 +131,27 @@ console.log('12n / 3n: ', 12n / 3n);
 console.log('20n == 20n :', 20n == 20);
 console.log('20n > 19 :', 20n > 19);
 console.log('20n == String(20) :', 20n == String(20));
+
+console.log('------------ Internationalizing Number ------------');
+
+const options = {
+  style: 'currency',
+  // unit: 'mile-per-hour',
+  unit: 'celsius',
+  currency: 'EUR',
+  // useGrouping: false, ===> it will remove the separator
+};
+
+console.log('options: ', options);
+console.log(
+  "new Intl.NumberFormat('en-US', options): ",
+  new Intl.NumberFormat('en-US', options).format(4372352321753.32532534)
+);
+console.log(
+  "new Intl.NumberFormat('de-DE', options): ",
+  new Intl.NumberFormat('de-DE', options).format(4372352321753.32532534)
+);
+console.log(
+  "new Intl.NumberFormat('fa-IR', options): ",
+  new Intl.NumberFormat('fa-IR', options).format(4372352321753.32532534)
+);

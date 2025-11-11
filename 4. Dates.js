@@ -42,3 +42,40 @@ console.log('------------- SET Methods in Dates -------------');
 console.log('future.setFullYear(2040):', future.setFullYear(2040));
 console.log('future:', future);
 console.log('Like all GET methods, you can set everything to the new value');
+
+console.log('------------- Playing around with Dates -------------');
+const future2 = new Date(2037, 10, 19, 15, 23, 5);
+console.log('Number(future2): ', Number(future2));
+console.log('+future2: ', +future2);
+
+// DESC a function the calculate the difference between two dates:
+const daysPassed = (date1, date2) =>
+  Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
+
+console.log(
+  'daysPassed(): ',
+  daysPassed(new Date(2037, 3, 13), new Date(2037, 3, 1))
+);
+
+console.log('------------- Internationalizing Dates -------------');
+console.log('new Date(): ', new Date());
+console.log(
+  " new Intl.DateTimeFormat('en-US').format(new Date()): ",
+  new Intl.DateTimeFormat('en-US').format(new Date()),
+  'mm/dd/yyyy for en-US'
+);
+console.log(
+  'for more options of date format, search "iso language code table"'
+);
+
+let options = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+console.log('options: ', options);
+console.log(
+  " new Intl.DateTimeFormat('en-US', options).format(new Date()): ",
+  new Intl.DateTimeFormat('en-US', options).format(new Date())
+);
